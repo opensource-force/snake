@@ -4,7 +4,7 @@
 <a href='#'><img src="https://img.shields.io/badge/Made%20with-Nim-&?style=flat-square&labelColor=232329&color=FFE953&logo=nim"/></a>
 <a href='#'><img src="https://img.shields.io/badge/Maintained%3F-Yes-green.svg?style=flat-square&labelColor=232329&color=5277C3"></img></a>
 <br/>
-<a href='#'><img src="https://img.shields.io/tokei/lines/github/wick3dr0se/sysfetch?color=%23ff4f64&label=LOC&logo=buffer&logoColor=%23ff4f64&style=flat-square&labelColor=232329"/></a>
+
 <a href='#'><img src="https://img.shields.io/github/size/opensource-force/snake/src/snake.nim?branch=main&color=%231DBF73&label=Size&logo=files&logoColor=%231DBF73&style=flat-square&labelColor=232329"/></a>
 <br/>
 <a href="https://discord.gg/W4mQqNnfSq">
@@ -27,7 +27,7 @@ nim c snake.nim
 ## Installation (optional)
 Install to $PATH
 ```bash
-cp snake /usr/bin/local/
+cp snake /usr/local/bin
 ```
 
 ---
