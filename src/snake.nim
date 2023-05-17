@@ -3,13 +3,13 @@ import os, terminal, strutils, random, lib/term
 let (cols, rows) = terminalSize()
 
 var
-  i: int
   snakeLength: int = 3
   snakeX: int = cols div 2
   snakeY: int = rows div 2
   snakeBody: seq[(int, int)] = @[]
+  direction: char = 'U'
   foodX, foodY: int
-  delay: int = 700
+  delay: int = 500
 
 proc initTerm() =
   altBuffer()
@@ -61,10 +61,26 @@ proc wallCollision() =
 
 proc keyMap(): bool =
   case toUpper(readKey())
-  of "H", "A", "[D": snakeX -= 1
-  of "J", "S", "[B": snakeY += 1
-  of "K", "W", "[A": snakeY -= 1
-  of "L", "D", "[C": snakeX += 1
+  of "H", "A", "[D":
+    if direction == 'R':
+      return
+    snakeX -= 1
+    direction = 'L'
+  of "J", "S", "[B":
+    if direction == 'U':
+      return
+    snakeY += 1
+    direction = 'D'
+  of "K", "W", "[A":
+    if direction == 'D':
+      return
+    snakeY -= 1
+    direction = 'U'
+  of "L", "D", "[C":
+    if direction == 'L':
+      return
+    snakeX += 1
+    direction = 'R'
   of "Q": gameOver(2)
   else: return false
   return true
