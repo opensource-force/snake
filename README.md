@@ -5,7 +5,7 @@
 <a href='#'><img src="https://img.shields.io/badge/Maintained%3F-Yes-green.svg?style=flat-square&labelColor=232329&color=5277C3"></img></a>
 <br/>
 <a href='#'><img src="https://img.shields.io/tokei/lines/github/wick3dr0se/sysfetch?color=%23ff4f64&label=LOC&logo=buffer&logoColor=%23ff4f64&style=flat-square&labelColor=232329"/></a>
-<a href='#'><img src="https://img.shields.io/github/size/opensource-force/snake/snake?branch=main&color=%231DBF73&label=Size&logo=files&logoColor=%231DBF73&style=flat-square&labelColor=232329"/></a>
+<a href='#'><img src="https://img.shields.io/github/size/opensource-force/snake/src/snake.nim?branch=main&color=%231DBF73&label=Size&logo=files&logoColor=%231DBF73&style=flat-square&labelColor=232329"/></a>
 <br/>
 <a href="https://discord.gg/W4mQqNnfSq">
 <img src="https://discordapp.com/api/guilds/913584348937207839/widget.png?style=shield"/></a>
