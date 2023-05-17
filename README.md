@@ -44,9 +44,9 @@ snake
 ```
 
 ## Controls
-`H`, `A`, `←`: Left
-`J`, `S`, `↓`: Down
-`K`, `W`, `↑`: Up
+`H`, `A`, `←`: Left  
+`J`, `S`, `↓`: Down  
+`K`, `W`, `↑`: Up  
 `L`, `D`, `→`: Right
 
 `Q`, `Ctrl+C`: Quit
