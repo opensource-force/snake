@@ -3,13 +3,13 @@ import os, terminal, strutils, random, lib/term
 let (cols, rows) = terminalSize()
 
 var
-  snakeLength: int = 3
   snakeX: int = cols div 2
   snakeY: int = rows div 2
   snakeBody: seq[(int, int)] = @[]
+  snakeLength: int = 3
   direction: char = 'U'
   foodX, foodY: int
-  delay: int = 500
+  delay: int = 700
 
 proc initTerm() =
   altBuffer()
@@ -37,6 +37,20 @@ proc drawFood() =
   setCursorPos(foodX, foodY)
   stdout.styledWrite(bgRed, " ")
 
+proc moveSnake(x, y: int, snakeX, snakeY: var int) =
+  if x == -1:
+    if direction == 'R': snakeX += 1
+    else: direction = 'L'; snakeX -= 1
+  elif y == 1:
+    if direction == 'U': snakeY -= 1
+    else: direction = 'D'; snakeY += 1
+  elif y == -1:
+    if direction == 'D': snakeY += 1
+    else: direction = 'U'; snakeY -= 1
+  elif x == 1:
+    if direction == 'L': snakeX -= 1
+    else: direction = 'R'; snakeX += 1
+
 proc placeFood() =
   while true:
     foodX = rand(cols - 2) + 1
@@ -60,28 +74,18 @@ proc wallCollision() =
     gameOver(4)
 
 proc keyMap(): bool =
-  case toUpper(readKey())
-  of "H", "A", "[D":
-    if direction == 'R':
-      return
-    snakeX -= 1
-    direction = 'L'
-  of "J", "S", "[B":
-    if direction == 'U':
-      return
-    snakeY += 1
-    direction = 'D'
-  of "K", "W", "[A":
-    if direction == 'D':
-      return
-    snakeY -= 1
-    direction = 'U'
-  of "L", "D", "[C":
-    if direction == 'L':
-      return
-    snakeX += 1
-    direction = 'R'
-  of "Q": gameOver(2)
+  case getch().toUpperAscii
+  of 'Q': gameOver(2)
+  of 'H', 'A': moveSnake(-1, 0, snakeX, snakeY)
+  of 'J', 'S': moveSnake(0, 1, snakeX, snakeY)
+  of 'K', 'W': moveSnake(0, -1, snakeX, snakeY)
+  of 'L', 'D': moveSnake(1, 0, snakeX, snakeY)
+  of '\e':
+    case getch() & getch()
+    of "[D": moveSnake(-1, 0, snakeX, snakeY)
+    of "[B": moveSnake(0, 1, snakeX, snakeY)
+    of "[A": moveSnake(0, -1, snakeX, snakeY)
+    of "[C": moveSnake(1, 0, snakeX, snakeY)
   else: return false
   return true
 
