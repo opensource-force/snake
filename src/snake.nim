@@ -1,4 +1,4 @@
-import os, terminal, strutils, random, lib/term
+import os, terminal, strutils, random, term
 
 let (cols, rows) = terminalSize()
 
