@@ -14,7 +14,12 @@
 ## Compiling
 Download `snake`
 ```bash
-git clone https://github.com/opensource-force/snake; cd "${_##*/}"/src
+git clone https://github.com/opensource-force/snake; cd snake/src
+```
+
+Download the term nimble library
+```
+nimble install https://github.com/wick3dr0se/term
 ```
 
 Compile to a binary executable
