@@ -14,19 +14,18 @@ var
 proc initTerm() =
   altBuffer()
   hideCursor()
-  echoOff()
+  setMode(noecho)
 
 proc gameOver(n: int) =
   for _ in 0..<n:
-    for i in ["\e[37m", "\e[31m"]:
-      setCursorPos(cols div 2 - 4, rows div 2)
-      stdout.write(i, "GAME OVER\e[m")
-      stdout.flushFile
-      sleep(150)
+    setCursorPos(cols div 2 - 4, rows div 2)
+    echoRandColor("GAME OVER")
+    stdout.flushFile
+    sleep(150)
 
   mainBuffer()
   showCursor()
-  echoOn()
+  setMode(cooked)
   quit()
 
 proc drawSnake() =
@@ -35,7 +34,7 @@ proc drawSnake() =
 
 proc drawFood() =
   setCursorPos(foodX, foodY)
-  stdout.styledWrite(bgRed, " ")
+  stdout.write(randColorSeq(bg), " \e[m")
 
 proc moveSnake(x, y: int, snakeX, snakeY: var int) =
   if x == -1:
@@ -67,15 +66,15 @@ proc consumeFood() =
 
 proc selfCollision() =
   if (snakeX, snakeY) in snakeBody[0..<len(snakeBody)-1]:
-    gameOver(4)
+    gameOver(10)
 
 proc wallCollision() =
   if snakeX == -1 or snakeX == cols or snakeY == -1 or snakeY == rows:
-    gameOver(4)
+    gameOver(10)
 
 proc keyMap(): bool =
   case getch().toUpperAscii
-  of 'Q': gameOver(2)
+  of 'Q': gameOver(6)
   of 'H', 'A': moveSnake(-1, 0, snakeX, snakeY)
   of 'J', 'S': moveSnake(0, 1, snakeX, snakeY)
   of 'K', 'W': moveSnake(0, -1, snakeX, snakeY)
