@@ -1,6 +1,6 @@
 <div align="center">
 <h1>Snake :snake:</h1>
-<p>A super minimal classic snake implementation written in Nim</p>
+<p>A super minimal classic snake implementation written in Nim with SDL</p>
 <a href='#'><img src="https://img.shields.io/badge/Made%20with-Nim-&?style=flat-square&labelColor=232329&color=FFE953&logo=nim"/></a>
 <a href='#'><img src="https://img.shields.io/badge/Maintained%3F-Yes-green.svg?style=flat-square&labelColor=232329&color=5277C3"></img></a>
 <br/>
@@ -17,9 +17,9 @@ Download `snake`
 git clone https://github.com/opensource-force/snake; cd snake/src
 ```
 
-Download the term nimble library
+Get SDL2
 ```
-nimble install https://github.com/wick3dr0se/term
+https://github.com/nim-lang/sdl2
 ```
 
 Compile to a binary executable
@@ -49,9 +49,7 @@ snake
 ```
 
 ## Controls
-`H`, `A`, `←`: Left  
-`J`, `S`, `↓`: Down  
-`K`, `W`, `↑`: Up  
-`L`, `D`, `→`: Right
-
-`Q`, `Ctrl+C`: Quit
+`←`: Left  
+`↓`: Down  
+`↑`: Up  
+`→`: Right
